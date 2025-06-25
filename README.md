@@ -1,69 +1,131 @@
-# React + TypeScript + Vite
+# Contact Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive contact management application built with React, TypeScript, and Vite. This application allows users to manage their contacts with full CRUD functionality, user authentication, and a clean, intuitive UI.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 User Authentication (Login/Register)
+- 👥 Contact Management (Create, Read, Update, Delete)
+- 🔍 Search and filter contacts
+- 📱 Responsive design for all devices
+- ✨ Modern UI with smooth animations
+- 🛡️ Protected routes for authenticated users
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend Framework**: React 18
+- **Language**: TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **State Management**: Zustand
+- **Routing**: React Router
+- **HTTP Client**: Axios
+- **Form Handling**: React Hook Form
+- **Icons**: Lucide Icons
+- **Animation**: Framer Motion
+- **Linting**: ESLint + Prettier
+- **Code Formatting**: Prettier
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📁 Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── app/                    # App root components
+│   ├── app.tsx             # Main app component
+│   └── router.tsx          # Application routes
+├── components/             # Reusable UI components
+│   └── ui/                 # Shadcn/ui components
+├── features/               # Feature-based modules
+│   ├── auth/               # Authentication feature
+│   │   ├── components/     # Auth components
+│   │   ├── pages/          # Auth pages
+│   │   └── store/          # Auth state management
+│   ├── contacts/           # Contacts feature
+│   │   ├── components/     # Contact components
+│   │   ├── pages/          # Contact pages
+│   │   └── store/          # Contacts state management
+│   └── home/               # Home feature
+│       └── pages/          # Home pages
+├── infrastructure/         # API and service layer
+│   └── api/                # API clients and types
+├── lib/                    # Utility functions
+└── main.tsx                # Application entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧠 State Management
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The application uses **Zustand** for state management, providing a simple and scalable solution for managing global state. The state is organized by feature:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Auth Store
+- Manages user authentication state
+- Handles login/logout functionality
+- Persists user session
+
+### Contacts Store
+- Manages contacts data
+- Handles CRUD operations
+- Manages loading and error states
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or later)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/contact-react.git
+   cd contact-react
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+
+3. Create a `.env` file in the root directory and add your environment variables:
+   ```env
+   VITE_API_BASE_URL=http://localhost:3000/api
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## 🧪 Running Tests
+
+```bash
+npm test
+# or
+yarn test
 ```
+
+## 🏗 Building for Production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+Made with ❤️ by [Your Name]
