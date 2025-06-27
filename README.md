@@ -235,5 +235,5 @@ VITE_APP_TITLE=ContactME
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+by alimarf
 
-Made with ❤️ by Alimarf
