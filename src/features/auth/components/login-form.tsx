@@ -84,7 +84,11 @@ export function LoginForm() {
   // Handle form submission
   const onSubmit = async (values: LoginFormValues) => {
     clearError();
-    await login(values);
+    // Ensure email and password are always provided as required by LoginRequest
+    await login({
+      email: values.email || '',
+      password: values.password || ''
+    });
     // If login is successful, navigate to contacts page
     if (!error) {
       navigate('/contacts');

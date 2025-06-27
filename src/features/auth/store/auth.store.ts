@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { User } from '../../../entities/user';
 import { authApi } from '../../../infrastructure/api/auth.api';
-import type { LoginRequest, RegisterRequest } from '../../../infrastructure/api/auth.api';
+import type { LoginRequest, RegisterRequest } from '../../../infrastructure/api/types/auth.types';
 
 interface AuthState {
   user: User | null;
