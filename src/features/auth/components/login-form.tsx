@@ -85,9 +85,9 @@ export function LoginForm() {
   const onSubmit = async (values: LoginFormValues) => {
     clearError();
     await login(values);
-    // If login is successful, navigate to home page
+    // If login is successful, navigate to contacts page
     if (!error) {
-      navigate('/');
+      navigate('/contacts');
     }
   };
 

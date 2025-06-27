@@ -1,44 +1,41 @@
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
-import { useAuthStore } from '../features/auth/store/auth.store';
-import { LoginPage } from '../features/auth/pages/login-page';
-import { RegisterPage } from '../features/auth/pages/register-page';
-import { HomePage } from '../features/home/pages/home-page';
-import { ContactsPage } from '../features/contacts/pages/contacts-page';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
+import { useAuthStore } from "../features/auth/store/auth.store";
+import { LoginPage } from "../features/auth/pages/login-page";
+import { RegisterPage } from "../features/auth/pages/register-page";
+import { ContactsPage } from "../features/contacts/pages/contacts-page";
+import { CreateContactPage } from "../features/contacts/pages/create-contact-page";
+import { EditContactPage } from "../features/contacts/pages/edit-contact-page";
 
 // Protected route wrapper component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuthStore();
-  
+
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-  
+
   return <>{children}</>;
 };
 
 // Public route wrapper component (redirects to home if already authenticated)
 const PublicRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuthStore();
-  
+
   if (isAuthenticated) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/contacts" replace />;
   }
-  
+
   return <>{children}</>;
 };
 
 export function AppRouter() {
   const router = createBrowserRouter([
     {
-      path: '/',
-      element: (
-        <ProtectedRoute>
-          <HomePage />
-        </ProtectedRoute>
-      ),
-    },
-    {
-      path: '/contacts',
+      path: "/",
       element: (
         <ProtectedRoute>
           <ContactsPage />
@@ -46,7 +43,31 @@ export function AppRouter() {
       ),
     },
     {
-      path: '/login',
+      path: "/contacts",
+      element: (
+        <ProtectedRoute>
+          <ContactsPage />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/contacts/create",
+      element: (
+        <ProtectedRoute>
+          <CreateContactPage />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/contacts/edit/:id",
+      element: (
+        <ProtectedRoute>
+          <EditContactPage />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/login",
       element: (
         <PublicRoute>
           <LoginPage />
@@ -54,7 +75,7 @@ export function AppRouter() {
       ),
     },
     {
-      path: '/register',
+      path: "/register",
       element: (
         <PublicRoute>
           <RegisterPage />
@@ -62,7 +83,7 @@ export function AppRouter() {
       ),
     },
     {
-      path: '*',
+      path: "*",
       element: <Navigate to="/" replace />,
     },
   ]);

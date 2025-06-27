@@ -3,6 +3,7 @@ export interface Contact {
   name: string;
   phone: string;
   email: string;
+  address?: string;
   user: string;
   createdAt: string;
   updatedAt: string;
@@ -25,10 +26,12 @@ export interface CreateContactRequest {
   name: string;
   phone: string;
   email: string;
+  address: string;
 }
 
 export interface UpdateContactRequest {
   name?: string;
   phone?: string;
   email?: string;
+  address?: string;
 }
